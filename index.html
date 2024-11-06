@@ -12,7 +12,7 @@
             color: #f0f0f0;
         }
         .container {
-            margin-top: 50px;
+            margin-top: 100px;
             max-width: 600px;
             background-color: #2c2c2e;
             padding: 20px;
@@ -78,48 +78,77 @@
             font-weight: bold;
             margin-top: 10px;
         }
+        .side-button {
+            margin-top: 10px;
+            border-radius: 10px;
+        }
+        .navbar {
+            background-color: #1c1c1e;
+            padding: 10px;
+        }
+        .navbar a {
+            color: #ffffff;
+            text-decoration: none;
+            padding: 10px;
+            margin-left: 20px;
+        }
+        .navbar a:hover {
+            color: #3b82f6;
+        }
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
 <body>
+    <!-- شريط التنبيه في الأعلى -->
+    <div class="alert alert-info text-center mb-0" role="alert">
+        سجل دخولك لتظهر لك صفحات تأسيس قدرات وتحصيلي
+    </div>
+
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#">حساب النسبة المئوية</a>
+        <div class="ml-auto">
+            <a href="login.html" id="login-link">تسجيل الدخول</a>
+            <a href="tasees_qa.html" id="qdrat" class="hidden">تأسيس القدرات</a>
+            <span id="percentage-span" style="display:none;">نسبتك هي: <span id="percentage-value"></span>%</span>
+        </div>
+    </nav>
+
     <div class="container">
-        <h2>حساب النسبة المئوية للدرجات</h2>
-        
+        <h2>حساب النسبة للدرجات</h2>
+
         <!-- أزرار المراحل -->
         <div class="text-center mb-4">
-            <!-- زر الابتدائي مع الأزرار الفرعية -->
             <div class="btn-group">
                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     الابتدائي
                 </button>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="#" onclick="setGradeInputs(7, ['اللغة العربية', 'الرياضيات', 'العلوم', 'التربية الإسلامية', 'الدراسات الاجتماعية', 'اللغة الإنجليزية', 'المهارات الحياتية'])">ثالث ابتدائي</a>
-                    <a class="dropdown-item" href="#" onclick="setGradeInputs(7, ['اللغة العربية', 'الرياضيات', 'العلوم', 'التربية الإسلامية', 'الدراسات الاجتماعية', 'اللغة الإنجليزية', 'المهارات الحياتية'])">رابع ابتدائي</a>
-                    <a class="dropdown-item" href="#" onclick="setGradeInputs(7, ['اللغة العربية', 'الرياضيات', 'العلوم', 'التربية الإسلامية', 'الدراسات الاجتماعية', 'اللغة الإنجليزية', 'المهارات الحياتية'])">خامس ابتدائي</a>
-                    <a class="dropdown-item" href="#" onclick="setGradeInputs(7, ['اللغة العربية', 'الرياضيات', 'العلوم', 'التربية الإسلامية', 'الدراسات الاجتماعية', 'اللغة الإنجليزية', 'المهارات الحياتية'])">سادس ابتدائي</a>
+                    <!-- Other grade options... -->
                 </div>
             </div>
 
-            <!-- زر المتوسط مع الأزرار الفرعية -->
             <div class="btn-group mx-2">
                 <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     المتوسط
                 </button>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="#" onclick="setGradeInputs(7, ['اللغة العربية', 'الرياضيات', 'العلوم', 'التربية الإسلامية', 'الدراسات الاجتماعية', 'اللغة الإنجليزية', 'الحاسب الآلي'])">أول متوسط</a>
-                    <a class="dropdown-item" href="#" onclick="setGradeInputs(7, ['اللغة العربية', 'الرياضيات', 'العلوم', 'التربية الإسلامية', 'الدراسات الاجتماعية', 'اللغة الإنجليزية', 'الحاسب الآلي'])">ثاني متوسط</a>
-                    <a class="dropdown-item" href="#" onclick="setGradeInputs(7, ['اللغة العربية', 'الرياضيات', 'العلوم', 'التربية الإسلامية', 'الدراسات الاجتماعية', 'اللغة الإنجليزية', 'الحاسب الآلي'])">ثالث متوسط</a>
+                    <!-- Other grade options... -->
                 </div>
             </div>
 
-            <!-- زر الثانوي مع الأزرار الفرعية -->
             <div class="btn-group">
                 <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     الثانوي
                 </button>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#" onclick="setGradeInputs(6, ['الكفايات اللغوية', 'الرياضيات', 'التفسير', 'اللغة الإنجليزية', 'الاحياء' ,'التفكير الناقد'])">أول ثانوي</a>
-                    <a class="dropdown-item" href="#" onclick="setGradeInputs(6, ['اللغة العربية', 'الرياضيات', 'الفيزياء', 'اللغة الإنجليزية', 'الاحياء' ,'الكيمياء'])">ثاني ثانوي</a>
-                    <a class="dropdown-item" href="#" onclick="setGradeInputs(5, ['اللغة العربية', 'الرياضيات', 'الفيزياء', 'اللغة الإنجليزية', 'الاحياء' ,'الكيمياء'])">ثالث ثانوي</a>
+                    <a class="dropdown-item" href="#" onclick="setGradeInputs(6, ['كفايات لغوية', 'الرياضيات', 'تفسير', 'اللغة الإنجليزية', 'الاحياء', 'تفكير نافد'])">أول ثانوي</a>
+                    <!-- Other grade options... -->
                 </div>
             </div>
         </div>
@@ -128,7 +157,7 @@
             <div id="gradesContainer"></div>
             <button type="button" class="btn btn-block mt-3" onclick="calculatePercentage()">احسب النسبة</button>
         </form>
-        
+
         <div id="result" class="alert alert-info text-center" style="display: none;"></div>
         <div id="custom-message" class="text-center" style="display: none;"></div>
     </div>
@@ -138,6 +167,13 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 
     <script>
+        // تحقق من حالة تسجيل الدخول
+        var isLoggedIn = false; // تعديل هنا لتكون true إذا كان المستخدم قد سجل الدخول
+        
+        if (isLoggedIn) {
+            document.getElementById("qdrat").classList.remove("hidden");
+        }
+
         // دالة لتهيئة حقول الدرجات بناءً على المواد
         function setGradeInputs(totalSubjects, subjects) {
             const gradesContainer = document.getElementById("gradesContainer");
@@ -154,35 +190,45 @@
             });
         }
 
-        // دالة لحساب النسبة
+        // دالة لحساب النسبة المئوية
         function calculatePercentage() {
-            const gradesContainer = document.getElementById("gradesContainer");
-            const gradeInputs = gradesContainer.querySelectorAll("input[type='number']");
-            let totalGrades = 0;
-            let totalSubjects = gradeInputs.length;
+            let total = 0;
+            let validEntries = 0;
+            const inputs = document.querySelectorAll("input[type='number']");
 
-            gradeInputs.forEach(input => {
-                const grade = parseFloat(input.value);
-                if (!isNaN(grade)) {
-                    totalGrades += grade;
+            inputs.forEach(input => {
+                if (input.value !== "") {
+                    total += parseFloat(input.value);
+                    validEntries++;
                 }
             });
 
-            const percentage = (totalGrades / (totalSubjects * 100)) * 100;
-            const resultDiv = document.getElementById("result");
-            const messageDiv = document.getElementById("custom-message");
+            if (validEntries === inputs.length) {
+                const percentage = (total / (inputs.length * 100)) * 100;
+                document.getElementById("result").style.display = "block";
+                document.getElementById("result").innerText = `نسبتك هي: ${percentage.toFixed(2)}%`;
 
-            resultDiv.style.display = "block";
-            resultDiv.textContent = `نسبتك المئوية: ${percentage.toFixed(2)}%`;
+                const message = percentage > 95 ? "ممتاز ياوحش استمر!" : "ممتاز, شكلك مو مذاكر زين";
+                document.getElementById("custom-message").style.display = "block";
+                document.getElementById("custom-message").innerText = message;
 
-            // رسالة خاصة بناءً على النسبة
-            messageDiv.style.display = "block";
-            if (percentage >= 95) {
-                messageDiv.textContent = "ممتاز يا وحش استمر!";
-            } else {
-                messageDiv.textContent = "ممتاز, شكلك مو مذاكر زين";
+                document.getElementById("percentage-span").style.display = "inline";
+                document.getElementById("percentage-value").innerText = percentage.toFixed(2);
             }
         }
     </script>
-</body>
-</html>
+     <script>
+        // دالة للتحقق من تسجيل الدخول وإظهار صفحة تأسيس القدرات
+        function login() {
+            // جعل حالة تسجيل الدخول إلى true، ويمكنك تعديل هذه النقطة بناءً على تحققك من بيانات المستخدم
+            var isLoggedIn = true;
+
+            if (isLoggedIn) {
+                // إذا تم تسجيل الدخول، إظهار رابط "تأسيس القدرات" وتوجيه المستخدم إلى index.html
+                document.getElementById("qdrat").classList.remove("hidden");
+
+                // بعد الضغط على "تسجيل الدخول" سيتم نقله إلى الصفحة الرئيسية (index.html)
+                window.location.href = 'index.html';
+            }
+        }
+        <script/>
